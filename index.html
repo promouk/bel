@@ -31,7 +31,7 @@
             // If the user is still here, the deep linking didn't work, so open the ad hoc store
             if (isiOS) {
               window.location = appStoreUrl;
-            } else if (isAndroid) {
+            } else if (isAndroid && !document.webkitHidden) {
               window.location = googlePlayUrl;
             }
           }, 1000);
