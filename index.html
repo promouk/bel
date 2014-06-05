@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Emails</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script type="text/javascript">
+      $(function() {
+
+        // Parse the user agent to determine the device
+        var isiPad = navigator.userAgent.match(/iPad/i) != null;
+        var isiPad = !isiPad && ((navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null));
+        var isiOS = isiPad || isiPad;
+        var isAndroid = !isiOS && navigator.userAgent.match(/android/i) != null;
+        var isMobile = isiOS || isAndroid;
+
+        // Define the potential redirection Urls
+        var deepLinkUrl = 'uber://';
+        var appStoreUrl = 'https://itunes.apple.com/us/app/uber/id368677368';
+        var googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.ubercab';
+
+        // Open the app
+        window.location = deepLinkUrl;
+
+        // But provide a seamless fallback if the user doesn’t have the app installed.
+        setTimeout(function() {
+          // If the user is still here, the deep linking didn't work, so open the ad hoc store
+          if (isiOS) {
+            window.location = appStoreUrl;
+          } else if (isAndroid) {
+            window.location = googlePlayUrl;
+          }
+        }, 1000);
+
+      });
+    </script>
+  </head>
+  <body>
+    On a mbile device? We'll open the Uber app or point you to the ad hoc app store of you haven't installed it.
+    On desktop? Nothing should happen.
+  </body>
+</html>
