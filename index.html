@@ -21,27 +21,36 @@
         var googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.ubercab';
 
         // Open the app
-        window.location = deepLinkUrl;
+        if (isMobile) {
 
-        // But provide a seamless fallback if the user doesn’t have the app installed.
-        setTimeout(function() {
-          // If the user is still here, the deep linking didn't work, so open the ad hoc store
-          if (isiOS) {
-            window.location = appStoreUrl;
-          } else if (isAndroid) {
-            window.location = googlePlayUrl;
-          } else {
+          window.location = deepLinkUrl;
+
+          // But provide a seamless fallback if the user doesn’t have the app installed.
+          setTimeout(function() {
+            // If the user is still here, the deep linking didn't work, so open the ad hoc store
+            if (isiOS) {
+              window.location = appStoreUrl;
+            } else if (isAndroid) {
+              window.location = googlePlayUrl;
+            }
+          }, 1000);
+
+        } else {
+
+          setTimeout(function() {
             window.location = uberWebSiteUrl;
-          }
-        }, 1000);
+          }, 5000);
+
+        }
 
       });
     </script>
   </head>
   <body>
     <span style="font-weight:bold">On a mobile device?</span><br>
-    We'll open the Uber app or point you to the ad hoc app store of you haven't installed it.<br><br>
+    We'll open the Uber app
+    Or redirect to the ad-hoc app store if not installed.<br><br>
     <span style="font-weight:bold">On desktop?</span><br>
-    Nothing should happen.
+    In 5 seconds, we'll redirect you to www.uber.com i
   </body>
 </html>
