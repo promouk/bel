@@ -15,7 +15,8 @@
         var isMobile = isiOS || isAndroid;
 
         // Define the potential redirection Urls
-        var deepLinkUrl = 'uber://';
+        var uberDeepLinkUrl = 'uber://';
+        var uberWebSiteUrl = "http://www.uber.com"''
         var appStoreUrl = 'https://itunes.apple.com/us/app/uber/id368677368';
         var googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.ubercab';
 
@@ -29,6 +30,8 @@
             window.location = appStoreUrl;
           } else if (isAndroid) {
             window.location = googlePlayUrl;
+          } else {
+            window.location = uberWebSiteUrl;
           }
         }, 1000);
 
