@@ -31,18 +31,19 @@
         }
 
         handleAndroid = function() {
-          var w = null;
-          try {
-            window.location = uberDeepLinkUrl;
-            // w = window.open(uberDeepLinkUrl, '_blank');
-          } catch (e) {
-            // no exception
-          }
-          alert(w);
-          if (w) {
-            window.location = uberDeepLinkUrl;
-          }
-          // else { window.location = googlePlayUrl; }
+          window.location = "intent://uber/#Intent;package=com.ubercab;scheme=uber;end";
+          // var w = null;
+          // try {
+          //   window.location = uberDeepLinkUrl;
+          //   w = window.open(uberDeepLinkUrl, '_blank');
+          // } catch (e) {
+          //   // no exception
+          // }
+          // alert(w);
+          // if (w) {
+          //   window.location = uberDeepLinkUrl;
+          // }
+          // // else { window.location = googlePlayUrl; }
         }
 
         handleDesktop = function() {
