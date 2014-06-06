@@ -8,19 +8,19 @@
       $(function() {
 
         // Parse the user agent to determine the device
-        var isiPad = navigator.userAgent.match(/iPad/i) != null;
-        var isiPhone = !isiPad && ((navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null));
-        var isiOS = isiPad || isiPhone;
-        var isAndroid = !isiOS && navigator.userAgent.match(/android/i) != null;
-        var isMobile = isiOS || isAndroid;
-        var isDesktop = !isMobile;
+        var isiPad = navigator.userAgent.match(/iPad/i) != null,
+            isiPhone = !isiPad && ((navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null)),
+            isiOS = isiPad || isiPhone,
+            isAndroid = !isiOS && navigator.userAgent.match(/android/i) != null,
+            isMobile = isiOS || isAndroid,
+            isDesktop = !isMobile;
 
-        // Define the potential redirection Urls
-        var uberDeepLinkUrl = 'uber://';
-        var uberWebSiteUrl = 'http://www.uber.com';
-        var uberMobileWebSiteUrl = 'http://m.uber.com';
-        var appStoreUrl = 'https://itunes.apple.com/us/app/uber/id368677368';
-        var googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.ubercab';
+        // Define all the potential redirection Urls
+        var uberDeepLinkUrl = 'uber://',
+            uberWebSiteUrl = 'http://www.uber.com',
+            uberMobileWebSiteUrl = 'http://m.uber.com',
+            appStoreUrl = 'https://itunes.apple.com/us/app/uber/id368677368',
+            googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.ubercab';
 
         openiOSAppOrFallback = function() {
           window.location = uberDeepLinkUrl;
