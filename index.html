@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Emails</title>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
     <script type="text/javascript">
       $(function() {
 
@@ -37,9 +37,8 @@
           } catch (e) {
             // no exception
           }
-          if (!w) {
-            window.location = googlePlayUrl;
-          }
+          if (w) { window.location = uberDeepLinkUrl; }
+          else { window.location = googlePlayUrl; }
         }
 
         handleDesktop = function() {
