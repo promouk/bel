@@ -43,9 +43,7 @@
         }
 
         handleDesktop = function() {
-          setTimeout(function() {
-            window.location = uberMobileWebSiteUrl;
-          }, 25);
+          window.location = uberMobileWebSiteUrl;
         }
 
         if (isiOS) {
@@ -55,7 +53,6 @@
         } else if (isDesktop) {
           handleDesktop();
         }
-
 
       });
     </script>
