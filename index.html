@@ -37,8 +37,10 @@
           } catch (e) {
             // no exception
           }
-          if (w) { window.location = uberDeepLinkUrl; }
-          else { window.location = googlePlayUrl; }
+          if (w) {
+            window.location = uberDeepLinkUrl;
+          }
+          // else { window.location = googlePlayUrl; }
         }
 
         handleDesktop = function() {
