@@ -33,7 +33,7 @@
         handleAndroid = function() {
           var w = null;
           try {
-            w = window.location = uberDeepLinkUrl;
+            w = window.open(uberDeepLinkUrl);
           } catch (e) {
             // no exception
           }
