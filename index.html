@@ -29,10 +29,13 @@
           // But provide a seamless fallback if the user doesn’t have the app installed.
           setTimeout(function() {
             // If the user is still here, the deep linking didn't work, so open the ad hoc store
-            if (isiOS) {
+            // Check for Chrome AND Safari
+            if (isiOS && !document.webkitHidden) {
               window.location = appStoreUrl;
-            } else if (isAndroid && !document.webkitHidden) {
-              window.location = googlePlayUrl;
+            } else if (isAndroid) {
+              // window.location = googlePlayUrl;
+              // window.location = 'intent://view?id=123#Intent;package=com.ubercab;scheme=myapp;launchFlags=268435456;end;';
+
             }
           }, 1000);
 
