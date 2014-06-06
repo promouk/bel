@@ -9,10 +9,11 @@
 
         // Parse the user agent to determine the device
         var isiPad = navigator.userAgent.match(/iPad/i) != null;
-        var isiPad = !isiPad && ((navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null));
-        var isiOS = isiPad || isiPad;
+        var isiPhone = !isiPad && ((navigator.userAgent.match(/iPhone/i) != null) || (navigator.userAgent.match(/iPod/i) != null));
+        var isiOS = isiPad || isiPhone;
         var isAndroid = !isiOS && navigator.userAgent.match(/android/i) != null;
         var isMobile = isiOS || isAndroid;
+        var isDesktop = !isMobile;
 
         // Define the potential redirection Urls
         var uberDeepLinkUrl = 'uber://';
@@ -21,30 +22,40 @@
         var appStoreUrl = 'https://itunes.apple.com/us/app/uber/id368677368';
         var googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.ubercab';
 
-        // Open the app
-        if (isMobile) {
-
+        openiOSAppOrFallback = function() {
           window.location = uberDeepLinkUrl;
 
-          // But provide a seamless fallback if the user doesn’t have the app installed.
           setTimeout(function() {
-            // If the user is still here, the deep linking didn't work, so open the ad hoc store
-            // Check for Chrome AND Safari
-            if (isiOS && !document.webkitHidden) {
-              window.location = appStoreUrl;
-            } else if (isAndroid) {
-              // window.location = googlePlayUrl;
-              window.location = 'intent://view?id=Uber+Technologies,+Inc.#Intent;package=com.ubercab;scheme=uber;launchFlags=268435456;end;';
-            }
+            window.location = appStoreUrl;
           }, 25);
+        }
 
-        } else {
+        openAndroidAppOrFallback = function() {
+          var w = null;
+          try {
+            w = window.location = uberDeepLinkUrl;
+          } catch (e) {
+            // no exception
+          }
+          if (!w) {
+            window.location = googlePlayUrl;
+          }
+        }
 
+        handleDesktop = function() {
           setTimeout(function() {
             window.location = uberMobileWebSiteUrl;
-          }, 5000);
-
+          }, 25);
         }
+
+        if (isiOS) {
+          openiOSAppOrFallback();
+        } else if (isAndroid) {
+          openAndroidAppOrFallback();
+        } else if (isDesktop) {
+          handleDesktop();
+        }
+
 
       });
     </script>
