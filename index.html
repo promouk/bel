@@ -22,7 +22,7 @@
             appStoreUrl = 'https://itunes.apple.com/us/app/uber/id368677368',
             googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.ubercab';
 
-        openiOSAppOrFallback = function() {
+        handleiOS = function() {
           window.location = uberDeepLinkUrl;
 
           setTimeout(function() {
@@ -30,7 +30,7 @@
           }, 25);
         }
 
-        openAndroidAppOrFallback = function() {
+        handleAndroid = function() {
           var w = null;
           try {
             w = window.location = uberDeepLinkUrl;
@@ -49,9 +49,9 @@
         }
 
         if (isiOS) {
-          openiOSAppOrFallback();
+          handleiOS();
         } else if (isAndroid) {
-          openAndroidAppOrFallback();
+          handleAndroid();
         } else if (isDesktop) {
           handleDesktop();
         }
