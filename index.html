@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Emails</title>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <title>POOL3</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
     <script type="text/javascript">
       $(function() {
         // Parse the user agent to determine the device
@@ -14,10 +14,10 @@
             isMobile = isiOS || isAndroid,
             isDesktop = !isMobile;
         // Define all the potential redirection Urls
-        var deepLink = 'uber://?action=applyPromo&promo=POOLFIVER',
+        var deepLink = 'uber://?action=applyPromo&promo=POOL3',
             appStoreUrl = 'https://itunes.apple.com/us/app/uber/id368677368',
-            androidIntentUrl = 'intent://uber/#Intent;package=com.ubercab;scheme=uber;end',
-            muberDotCom = 'http://t.uber.com/POOL5';
+            androidIntentUrl = 'https://m.uber.com/ul/?action=applyPromo&promo=POOL3',
+            muberDotCom = 'https://login.uber.com/login';
         // Handle each case with a seamless fallback to the application store on mobile devices
         if (isiOS) {
           window.location = deepLink;
